@@ -1,0 +1,62 @@
+#!/usr/bin/env groovy
+
+pipeline {
+
+    options {
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: "5", artifactNumToKeepStr: "5"))
+    }
+
+    environment {
+        ENV = "dev"
+        SKIP_IMAGE_BUILD = "false"
+        SKIP_SONAR_ANALYSIS = "true"
+    }
+
+    stages {
+        stage("Init"){
+            steps{
+                printTitle("Init")
+            }
+        }
+
+        stage("Compile"){
+            when {
+                expression {
+                    return SKIP_IMAGE_BUILD == "false"
+                }
+            }
+            steps{
+                printTitle("Compile")
+                sh """
+                    mvn clean install
+                """
+            }
+        }
+
+        stage("SonarQube analysis") {
+            when {
+                expression {
+                    return SKIP_SONAR_ANALYSIS == "false"
+                }
+            }
+            steps {
+                printTitle("SonarQube")
+            }
+        }
+    }
+}
+
+def getProperty(expression) {
+    return sh(script: "mvn help:evaluate -Dexpression=$expression -q -DforceStdout", returnStdout: true).trim()
+}
+
+def getVersion() {
+    return getProperty("project.version")
+}
+
+def printTitle(String title) {
+    println "##############################################################################################"
+    println "################ " + title
+    println "##############################################################################################"
+}
