@@ -4,6 +4,11 @@ pipeline {
 
     agent any
 
+    tools {
+        maven 'MAVEN_HOME'
+        jdk 'JAVA_HOME'
+    }
+
     options {
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: "5", artifactNumToKeepStr: "5"))
