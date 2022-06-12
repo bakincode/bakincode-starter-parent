@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ######################################################################### -->
+    <!-- #### P A R E N T _ P R O J E C T ######################################## -->
+    <!-- ######################################################################### -->
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version>
+        <relativePath/>
+    </parent>
+
+    <!-- ######################################################################### -->
+    <!-- #### P R O J E C T _ D E S C R I P T I O N ############################## -->
+    <!-- ######################################################################### -->
+
+    <groupId>com.bakincode</groupId>
+    <artifactId>bakincode-starter-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Bakincode Build Of Materials</name>
+    <description>Parent BOM providing dependency and plugin management for applications built by Bakincode</description>
+
+    <!-- ######################################################################### -->
+    <!-- #### P R O J E C T _ D E P E N D E N C I E S ############################ -->
+    <!-- ######################################################################### -->
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- SQL dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- JVM dependencies -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${maven-compiler-plugin.version}</version>
+        </dependency>
+        <!-- Spring Boot dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <!-- Swagger dependencies -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-codegen-maven-plugin</artifactId>
+            <version>${swagger-codegen-maven-plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc-openapi-ui.version}</version>
+        </dependency>
+        <!-- Lombok dependencies -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!-- MapStruct dependencies -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- ######################################################################### -->
+    <!-- #### P R O J E C T _ P R O P E R T I E S ################################ -->
+    <!-- ######################################################################### -->
+
+    <properties>
+        <!-- JVM dependencies -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+
+        <!-- Spring Boot dependencies -->
+        <spring-boot.version>2.7.0</spring-boot.version>
+
+        <!-- Swagger dependencies -->
+        <swagger-codegen-maven-plugin.version>2.4.27</swagger-codegen-maven-plugin.version>
+        <springdoc-openapi-ui.version>1.6.9</springdoc-openapi-ui.version>
+
+        <!-- Lombok dependencies -->
+        <lombok.version>1.18.24</lombok.version>
+
+        <!-- MapStruct dependencies -->
+        <mapstruct.version>1.5.0.Final</mapstruct.version>
+
+        <!-- SQL dependencies -->
+        <postgresql.version>42.3.6</postgresql.version>
+    </properties>
+
+</project>
